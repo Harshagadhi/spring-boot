@@ -10,4 +10,4 @@ COPY /target/spring-boot-mongo-1.0.jar $PROJECT_HOME/spring-boot-mongo.jar
 COPY initScript.sh $PROJECT_HOME/initScript.sh
 WORKDIR $PROJECT_HOME
 
-CMD ["sh","initScript.sh"]
+CMD ["java" ,"-jar","./spring-boot-mongo.jar"]
