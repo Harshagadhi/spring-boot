@@ -8,6 +8,6 @@ ENV PROJECT_HOME /opt/app
 
 COPY /var/lib/jenkins/workspace/POC/spring-boot-mongo.jar $/home/ubuntu/app/spring-boot-mongo.jar
 
-WORKDIR $PROJECT_HOME
+WORKDIR $app
 
 CMD ["java" ,"-jar","./spring-boot-mongo.jar"]
