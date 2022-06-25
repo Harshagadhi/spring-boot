@@ -1,22 +1,22 @@
 ---
 apiVersion: v1
-kind: ReplicationController
+kind: Deployment
 metadata:
   labels:
-    name: javawebapp
+    name: poc
   name: java-controller
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        name: javawebapp
+        name: poc
     spec:
       containers:
-      - image: dockerhandson/java-web-app
-        name: javawebapp
+      - image: harshagadhi/poc
+        name: poc
         ports:
-        - name: javawebapp
+        - name: poc
           containerPort: 8080  
 ---
 # Node Port Service
@@ -24,12 +24,12 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    name: javawebapp
-  name: javawebapp
+    name: poc
+  name: poc
 spec:
   type: NodePort
   ports:
     - port: 8080
       targetPort: 8080
   selector:
-    name: javawebapp
+    name: poc
