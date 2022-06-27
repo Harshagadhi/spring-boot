@@ -2,34 +2,35 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: netflix
   labels:
-    name: springboot
-    name: java-controller
+    app: netflix
 spec:
   replicas: 3
+  selector:
+    matchLabels:
+      app: netflix
   template:
     metadata:
       labels:
-        name: springboot
+        app: netflix
     spec:
       containers:
-      - image: aravind2389/html
-        name: springboot
+      - name: springboot
+        image: aravind2389/html
         ports:
-        - name: springboot
-          containerPort: 8080  
+        containerPort: 8080  
 ---
 # Node Port Service
 apiVersion: v1
 kind: Service
 metadata:
   labels:
-    name: springboot
-    name: springboot
+    app: netflix
 spec:
   type: LoadBalancer
   ports:
     - port: 8080
       targetPort: 8080
   selector:
-    app: springboot
+    app: netflix
