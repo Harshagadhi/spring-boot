@@ -1,21 +1,35 @@
-apiVersion: apps/v1
-kind: Deployment
+---
+apiVersion: v1
+kind: ReplicationController
 metadata:
-  name: poc-deployment
   labels:
-    app: nginx
+    name: springboot
+  name: java-controller
 spec:
   replicas: 1
-  selector:
-    matchLabels:
-      app: nginx
   template:
     metadata:
       labels:
-        app: nginx
+        name: springboot
     spec:
       containers:
-      - name: nginx
-        image: nginx:1.14.2
+      - image: harshagadhi/poc
+        name: springboot
         ports:
-        - containerPort: 80
+        - name: springboot
+          containerPort: 8080  
+---
+# Node Port Service
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: springboot
+  name: springboot
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    name: springboot
