@@ -1,35 +1,21 @@
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: poc-deployment
   labels:
-    name: poc
-    name: java-controller
+    app: nginx
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
   template:
     metadata:
       labels:
-        name: poc
+        app: nginx
     spec:
       containers:
-      - image: harshagadhi/poc
-        name: poc
+      - name: nginx
+        image: nginx:1.14.2
         ports:
-        - name: poc
-          containerPort: 8080  
----
-# Node Port Service
-apiVersion: v1
-kind: Service
-metadata:
-  labels:
-    name: poc
-  name: poc
-spec:
-  type: NodePort
-  ports:
-    - port: 8080
-      targetPort: 8080
-  selector:
-    name: poc
+        - containerPort: 80
