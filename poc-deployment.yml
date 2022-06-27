@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: springboot
-        image: aravind2389/html
+        image: harshagadhi/groovy:latest
         ports:
         containerPort: 8080  
 ---
