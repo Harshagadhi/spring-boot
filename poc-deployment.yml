@@ -19,7 +19,7 @@ spec:
       - name: springboot
         image: harshagadhi/groovy:$BUILD_ID
         ports:
-        containerPort: 8080  
+        - containerPort: 8080  
 ---
 apiVersion: v1
 kind: Service
