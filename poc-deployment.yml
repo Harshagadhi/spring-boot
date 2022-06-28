@@ -2,18 +2,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: netflix
+  name: springboot
   labels:
-    app: netflix
+    app: springboot
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
-      app: netflix
+      app: springboot
   template:
     metadata:
       labels:
-        app: netflix
+        app: springboot
     spec:
       containers:
       - name: springboot
@@ -27,7 +27,7 @@ metadata:
   name: lb-service
 spec:
   selector:
-    app: netflix
+    app: springboot
   ports:
     - protocol: TCP
       port: 80
