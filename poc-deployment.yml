@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: springboot
-        image: harshagadhi/groovy:$BUILD_ID
+        image: harshagadhi/groovy:Latest
         ports:
         - containerPort: 8080  
 ---
